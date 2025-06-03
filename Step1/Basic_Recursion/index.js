@@ -36,11 +36,19 @@
 // }
 // console.log(factorial(n));
 
-let n = 5;
-let arr = [5, 4, 3, 2, 1];
-function reverseArray(i, arr) {
-  if (i >= arr.length / 2) return arr;
-  [arr[i], arr[arr.length - 1 - i]] = [arr[arr.length - 1 - i], arr[i]];
-  return reverseArray(i + 1, arr);
+// let n = 5;
+// let arr = [5, 4, 3, 2, 1];
+// function reverseArray(i, arr) {
+//   if (i >= arr.length / 2) return arr;
+//   [arr[i], arr[arr.length - 1 - i]] = [arr[arr.length - 1 - i], arr[i]];
+//   return reverseArray(i + 1, arr);
+// }
+// console.log(reverseArray(n, arr));
+
+let str = "ABCDCBA";
+function checkPalindrome(i, str) {
+  if (i >= str.length / 2) return true;
+  if (str[i] !== str[str.length - 1 - i]) return false;
+  return checkPalindrome(i + 1, str);
 }
-console.log(reverseArray(n, arr));
+console.log(checkPalindrome(0, str) ? "Palindrome" : "Not a Palindrome");
