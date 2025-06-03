@@ -22,9 +22,16 @@
 // }
 // printNumber(n);
 
+// let n = 5;
+// function sumOfNumber(n) {
+//   if (n === 0) return 0;
+//   return n + sumOfNumber(n - 1);
+// }
+// console.log(sumOfNumber(n));
+
 let n = 5;
-function sumOfNumber(n) {
-  if (n === 0) return 0;
-  return n + sumOfNumber(n - 1);
+function factorial(n) {
+  if (n === 1) return n;
+  return n * factorial(n - 1);
 }
-console.log(sumOfNumber(n));
+console.log(factorial(n));
