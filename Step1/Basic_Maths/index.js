@@ -56,17 +56,29 @@
 // }
 // console.log(sum === copy ? "Armstrong Number" : "Not Armstrong Number");
 
-let n = 36;
-// for (let i = 0; i <= n; i++) {
+// let n = 36;
+// // for (let i = 0; i <= n; i++) {
+// //   if (n % i === 0) {
+// //     console.log(i);
+// //   }
+// // }
+// for (let i = 0; i <= Math.floor(Math.sqrt(n)); i++) {
 //   if (n % i === 0) {
 //     console.log(i);
+//     if (i !== n / i) {
+//       console.log(n / i);
+//     }
 //   }
 // }
-for (let i = 0; i <= Math.floor(Math.sqrt(n)); i++) {
-  if (n % i === 0) {
-    console.log(i);
-    if (i !== n / i) {
-      console.log(n / i);
+
+let n = 10;
+let count = 0;
+for (let j = 1; j <= Math.floor(Math.sqrt(n)); j++) {
+  if (n % j === 0) {
+    count++;
+    if (n / j !== j) {
+      count++;
     }
   }
 }
+console.log(count === 2 ? "Prime Number" : "Not a Prime Number");
