@@ -31,9 +31,17 @@ let n = 5;
 //   count++;
 // }
 
+// for (let i = 0; i < n; i++) {
+//   for (let j = i; j < n; j++) {
+//     process.stdout.write("*");
+//   }
+//   console.log();
+// }
+
 for (let i = 0; i < n; i++) {
+  let count = 1;
   for (let j = i; j < n; j++) {
-    process.stdout.write("*");
+    process.stdout.write(`${count++}`);
   }
   console.log();
 }
