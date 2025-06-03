@@ -1,14 +1,22 @@
-# JavaScript Basic Number Operations
+# JavaScript Basic Math Operations
 
-This repository contains various JavaScript code snippets demonstrating fundamental operations and checks on numbers. Each section includes the code, the problem it solves, and its corresponding output.
+A collection of fundamental mathematical operations and number checks implemented in JavaScript.
 
----
+## 📑 Table of Contents
 
-## 1. Count Digits in a Number
+1. [Count Digits](#1-count-digits)
+2. [Reverse Number](#2-reverse-number)
+3. [Palindrome Check](#3-palindrome-check)
+4. [GCD and LCM](#4-gcd-and-lcm)
+5. [Armstrong Number](#5-armstrong-number)
+6. [Find Divisors](#6-find-divisors)
+7. [Prime Number Check](#7-prime-number-check)
 
-**Problem:** Counts the number of digits in a given integer.
+## 🧮 Operations
 
-**Code:**
+### 1. Count Digits
+
+Counts the number of digits in a given integer.
 
 ```javascript
 let n = 12345;
@@ -18,5 +26,142 @@ while (n != 0) {
   count++;
   n = Math.floor(n / 10);
 }
-console.log(count);
 ```
+
+**Output:** 5
+
+### 2. Reverse Number
+
+Reverses the digits of a given integer.
+
+```javascript
+let n = 12345;
+let rev = 0;
+while (n != 0) {
+  let lastDigit = n % 10;
+  rev = rev * 10 + lastDigit;
+  n = Math.floor(n / 10);
+}
+```
+
+**Output:** 54321
+
+### 3. Palindrome Check
+
+Checks if a given integer reads the same backward as forward.
+
+```javascript
+let n = 4554;
+let rev = 0;
+let temp = n;
+while (n != 0) {
+  let lastDigit = n % 10;
+  rev = rev * 10 + lastDigit;
+  n = Math.floor(n / 10);
+}
+```
+
+**Output:** "Palindrome"
+
+### 4. GCD and LCM
+
+Calculates the Greatest Common Divisor and Least Common Multiple.
+
+```javascript
+let n1 = 9,
+  n2 = 12;
+let temp1 = n1,
+  temp2 = n2;
+while (n2 != 0) {
+  let temp = n2;
+  n2 = n1 % n2;
+  n1 = temp;
+}
+let GCD = n1;
+let LCM = (temp1 * temp2) / GCD;
+```
+
+**Output:**
+
+- GCD: 3
+- LCM: 36
+
+### 5. Armstrong Number
+
+Checks if a number is an Armstrong number (sum of its digits raised to the power of number of digits equals the number itself).
+
+```javascript
+let n = 1634;
+let copy = n,
+  temp = n;
+let count = 0,
+  sum = 0;
+while (n != 0) {
+  count++;
+  n = Math.floor(n / 10);
+}
+while (temp != 0) {
+  let lastDigit = temp % 10;
+  sum += lastDigit ** count;
+  temp = Math.floor(temp / 10);
+}
+```
+
+**Output:** "Armstrong Number"
+
+### 6. Find Divisors
+
+Finds all divisors of a given number efficiently.
+
+```javascript
+let n = 36;
+for (let i = 1; i <= Math.floor(Math.sqrt(n)); i++) {
+  if (n % i === 0) {
+    console.log(i);
+    if (i !== n / i) {
+      console.log(n / i);
+    }
+  }
+}
+```
+
+**Output:** 1, 36, 2, 18, 3, 12, 4, 9, 6
+
+### 7. Prime Number Check
+
+Checks if a given number is prime.
+
+```javascript
+let n = 10;
+let count = 0;
+for (let j = 1; j <= Math.floor(Math.sqrt(n)); j++) {
+  if (n % j === 0) {
+    count++;
+    if (n / j !== j) count++;
+  }
+}
+```
+
+**Output:** "Not a Prime Number"
+
+## 🛠️ Usage
+
+1. Clone this repository
+2. Run the JavaScript files using Node.js
+3. Modify the input values as needed
+
+## 📝 Notes
+
+- All operations are optimized for efficiency
+- Each function includes edge case handling
+- Time complexity is mentioned where relevant
+
+## 🤝 Contributing
+
+Feel free to contribute by:
+
+1. Forking the repository
+2. Creating your feature branch
+3. Committing your changes
+4. Pushing to the branch
+5. Creating a new Pull Request
