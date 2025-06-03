@@ -38,10 +38,20 @@ let n = 5;
 //   console.log();
 // }
 
+// for (let i = 0; i < n; i++) {
+//   let count = 1;
+//   for (let j = i; j < n; j++) {
+//     process.stdout.write(`${count++}`);
+//   }
+//   console.log();
+// }
+
 for (let i = 0; i < n; i++) {
-  let count = 1;
   for (let j = i; j < n; j++) {
-    process.stdout.write(`${count++}`);
+    process.stdout.write(" ");
+  }
+  for (let k = 0; k <= 2 * i; k++) {
+    process.stdout.write("*");
   }
   console.log();
 }
