@@ -29,9 +29,18 @@
 // }
 // console.log(sumOfNumber(n));
 
+// let n = 5;
+// function factorial(n) {
+//   if (n === 1) return n;
+//   return n * factorial(n - 1);
+// }
+// console.log(factorial(n));
+
 let n = 5;
-function factorial(n) {
-  if (n === 1) return n;
-  return n * factorial(n - 1);
+let arr = [5, 4, 3, 2, 1];
+function reverseArray(i, arr) {
+  if (i >= arr.length / 2) return arr;
+  [arr[i], arr[arr.length - 1 - i]] = [arr[arr.length - 1 - i], arr[i]];
+  return reverseArray(i + 1, arr);
 }
-console.log(factorial(n));
+console.log(reverseArray(n, arr));
