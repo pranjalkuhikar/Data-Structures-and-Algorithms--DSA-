@@ -85,15 +85,24 @@ let n = 5;
 //   console.log();
 // }
 
+// for (let i = 0; i < n; i++) {
+//   for (let j = 0; j <= i; j++) {
+//     process.stdout.write("*");
+//   }
+//   console.log();
+// }
+// for (let i = 1; i < n; i++) {
+//   for (let j = i; j < n; j++) {
+//     process.stdout.write("*");
+//   }
+//   console.log();
+// }
+
 for (let i = 0; i < n; i++) {
+  let count = i % 2 === 0 ? 1 : 0;
   for (let j = 0; j <= i; j++) {
-    process.stdout.write("*");
-  }
-  console.log();
-}
-for (let i = 1; i < n; i++) {
-  for (let j = i; j < n; j++) {
-    process.stdout.write("*");
+    process.stdout.write(`${count}`);
+    count = 1 - count;
   }
   console.log();
 }
