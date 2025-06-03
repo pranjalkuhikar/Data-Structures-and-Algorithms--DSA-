@@ -40,18 +40,25 @@
 // let LCM = (temp1 * temp2) / GCD;
 // console.log(LCM);
 
-let n = 1634;
-let copy = n;
-let temp = n;
-let count = 0;
-let sum = 0;
-while (n != 0) {
-  count++;
-  n = Math.floor(n / 10);
+// let n = 1634;
+// let copy = n;
+// let temp = n;
+// let count = 0;
+// let sum = 0;
+// while (n != 0) {
+//   count++;
+//   n = Math.floor(n / 10);
+// }
+// while (temp != 0) {
+//   let lastDigit = temp % 10;
+//   sum += lastDigit ** count;
+//   temp = Math.floor(temp / 10);
+// }
+// console.log(sum === copy ? "Armstrong Number" : "Not Armstrong Number");
+
+let n = 36;
+for (let i = 0; i <= n; i++) {
+  if (n % i === 0) {
+    console.log(i);
+  }
 }
-while (temp != 0) {
-  let lastDigit = temp % 10;
-  sum += lastDigit ** count;
-  temp = Math.floor(temp / 10);
-}
-console.log(sum === copy ? "Armstrong Number" : "Not Armstrong Number");
