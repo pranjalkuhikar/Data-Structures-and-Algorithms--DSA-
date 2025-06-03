@@ -45,10 +45,17 @@
 // }
 // console.log(reverseArray(n, arr));
 
-let str = "ABCDCBA";
-function checkPalindrome(i, str) {
-  if (i >= str.length / 2) return true;
-  if (str[i] !== str[str.length - 1 - i]) return false;
-  return checkPalindrome(i + 1, str);
+// let str = "ABCDCBA";
+// function checkPalindrome(i, str) {
+//   if (i >= str.length / 2) return true;
+//   if (str[i] !== str[str.length - 1 - i]) return false;
+//   return checkPalindrome(i + 1, str);
+// }
+// console.log(checkPalindrome(0, str) ? "Palindrome" : "Not a Palindrome");
+
+let n = 6;
+function fibonacci(n) {
+  if (n === 0 || n == 1) return n;
+  return fibonacci(n - 1) + fibonacci(n - 2);
 }
-console.log(checkPalindrome(0, str) ? "Palindrome" : "Not a Palindrome");
+console.log(fibonacci(n));
