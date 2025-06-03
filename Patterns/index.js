@@ -155,16 +155,24 @@ let n = 5;
 //   console.log();
 // }
 
-let count = 65;
+// let count = 65;
+// for (let i = 0; i < n; i++) {
+//   for (let j = i; j < n; j++) {
+//     process.stdout.write(" ");
+//   }
+//   for (let j = 0; j <= 2 * i; j++) {
+//     process.stdout.write(
+//       `${String.fromCharCode(j <= i ? count + j : count + (2 * i - j))}`
+//     );
+//   }
+//   count = 65;
+//   console.log();
+// }
+
 for (let i = 0; i < n; i++) {
-  for (let j = i; j < n; j++) {
-    process.stdout.write(" ");
+  let count = 69 - i;
+  for (let j = 0; j <= i; j++) {
+    process.stdout.write(`${String.fromCharCode(count + j)} `);
   }
-  for (let j = 0; j <= 2 * i; j++) {
-    process.stdout.write(
-      `${String.fromCharCode(j <= i ? count + j : count + (2 * i - j))}`
-    );
-  }
-  count = 65;
   console.log();
 }
