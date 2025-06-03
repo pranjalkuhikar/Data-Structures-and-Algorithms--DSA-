@@ -202,27 +202,38 @@ let n = 5;
 //   console.log();
 // }
 
+// for (let i = 0; i < n; i++) {
+//   for (let j = 0; j <= i; j++) {
+//     process.stdout.write("*");
+//   }
+//   for (let k = 2 * i; k <= 2 * n - 2; k++) {
+//     process.stdout.write(" ");
+//   }
+//   for (let j = 0; j <= i; j++) {
+//     process.stdout.write("*");
+//   }
+//   console.log();
+// }
+// for (let i = 0; i < n; i++) {
+//   for (let j = i; j < n; j++) {
+//     process.stdout.write("*");
+//   }
+//   for (let k = 0; k <= 2 * i; k++) {
+//     process.stdout.write(" ");
+//   }
+//   for (let j = i; j < n; j++) {
+//     process.stdout.write("*");
+//   }
+//   console.log();
+// }
+
 for (let i = 0; i < n; i++) {
-  for (let j = 0; j <= i; j++) {
-    process.stdout.write("*");
-  }
-  for (let k = 2 * i; k <= 2 * n - 2; k++) {
-    process.stdout.write(" ");
-  }
-  for (let j = 0; j <= i; j++) {
-    process.stdout.write("*");
-  }
-  console.log();
-}
-for (let i = 0; i < n; i++) {
-  for (let j = i; j < n; j++) {
-    process.stdout.write("*");
-  }
-  for (let k = 0; k <= 2 * i; k++) {
-    process.stdout.write(" ");
-  }
-  for (let j = i; j < n; j++) {
-    process.stdout.write("*");
+  for (let j = 0; j < n; j++) {
+    if (i === 0 || i === n - 1 || j === 0 || j === n - 1) {
+      process.stdout.write("*");
+    } else {
+      process.stdout.write(" ");
+    }
   }
   console.log();
 }
