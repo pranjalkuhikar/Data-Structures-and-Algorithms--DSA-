@@ -26,9 +26,8 @@ while (n != 0) {
   count++;
   n = Math.floor(n / 10);
 }
+console.log("Number of digits:", count); // Output: 5
 ```
-
-**Output:** 5
 
 ### 2. Reverse Number
 
@@ -42,9 +41,8 @@ while (n != 0) {
   rev = rev * 10 + lastDigit;
   n = Math.floor(n / 10);
 }
+console.log("Reversed number:", rev); // Output: 54321
 ```
-
-**Output:** 54321
 
 ### 3. Palindrome Check
 
@@ -59,9 +57,8 @@ while (n != 0) {
   rev = rev * 10 + lastDigit;
   n = Math.floor(n / 10);
 }
+console.log(temp === rev ? "Palindrome" : "Not Palindrome"); // Output: "Palindrome"
 ```
-
-**Output:** "Palindrome"
 
 ### 4. GCD and LCM
 
@@ -79,12 +76,9 @@ while (n2 != 0) {
 }
 let GCD = n1;
 let LCM = (temp1 * temp2) / GCD;
+console.log("GCD:", GCD); // Output: 3
+console.log("LCM:", LCM); // Output: 36
 ```
-
-**Output:**
-
-- GCD: 3
-- LCM: 36
 
 ### 5. Armstrong Number
 
@@ -105,9 +99,8 @@ while (temp != 0) {
   sum += lastDigit ** count;
   temp = Math.floor(temp / 10);
 }
+console.log(sum === copy ? "Armstrong Number" : "Not Armstrong Number"); // Output: "Armstrong Number"
 ```
-
-**Output:** "Armstrong Number"
 
 ### 6. Find Divisors
 
@@ -115,6 +108,7 @@ Finds all divisors of a given number efficiently.
 
 ```javascript
 let n = 36;
+console.log("Divisors of", n, "are:");
 for (let i = 1; i <= Math.floor(Math.sqrt(n)); i++) {
   if (n % i === 0) {
     console.log(i);
@@ -124,8 +118,6 @@ for (let i = 1; i <= Math.floor(Math.sqrt(n)); i++) {
   }
 }
 ```
-
-**Output:** 1, 36, 2, 18, 3, 12, 4, 9, 6
 
 ### 7. Prime Number Check
 
@@ -140,9 +132,8 @@ for (let j = 1; j <= Math.floor(Math.sqrt(n)); j++) {
     if (n / j !== j) count++;
   }
 }
+console.log(count === 2 ? "Prime Number" : "Not a Prime Number"); // Output: "Not a Prime Number"
 ```
-
-**Output:** "Not a Prime Number"
 
 ## 🛠️ Usage
 
