@@ -22,11 +22,18 @@ let n = 5;
 //   console.log();
 // }
 
-let count = 1;
+// let count = 1;
+// for (let i = 0; i < n; i++) {
+//   for (let j = 0; j <= i; j++) {
+//     process.stdout.write(`${count}`);
+//   }
+//   console.log();
+//   count++;
+// }
+
 for (let i = 0; i < n; i++) {
-  for (let j = 0; j <= i; j++) {
-    process.stdout.write(`${count}`);
+  for (let j = i; j < n; j++) {
+    process.stdout.write("*");
   }
   console.log();
-  count++;
 }
