@@ -138,10 +138,19 @@ let n = 5;
 //   console.log();
 // }
 
+// for (let i = 0; i < n; i++) {
+//   let count = 65;
+//   for (let j = i; j < n; j++) {
+//     process.stdout.write(`${String.fromCharCode(count++)} `);
+//   }
+//   console.log();
+// }
+
+let count = 65;
 for (let i = 0; i < n; i++) {
-  let count = 65;
-  for (let j = i; j < n; j++) {
-    process.stdout.write(`${String.fromCharCode(count++)} `);
+  for (let j = 0; j <= i; j++) {
+    process.stdout.write(`${String.fromCharCode(count)} `);
   }
+  count++;
   console.log();
 }
