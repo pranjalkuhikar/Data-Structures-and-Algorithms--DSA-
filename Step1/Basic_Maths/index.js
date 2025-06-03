@@ -57,8 +57,16 @@
 // console.log(sum === copy ? "Armstrong Number" : "Not Armstrong Number");
 
 let n = 36;
-for (let i = 0; i <= n; i++) {
+// for (let i = 0; i <= n; i++) {
+//   if (n % i === 0) {
+//     console.log(i);
+//   }
+// }
+for (let i = 0; i <= Math.floor(Math.sqrt(n)); i++) {
   if (n % i === 0) {
     console.log(i);
+    if (i !== n / i) {
+      console.log(n / i);
+    }
   }
 }
