@@ -14,10 +14,17 @@
 // }
 // printNumber(n);
 
+// let n = 5;
+// function printNumber(n) {
+//   if (n === 0) return;
+//   printNumber(n - 1);
+//   console.log(n);
+// }
+// printNumber(n);
+
 let n = 5;
-function printNumber(n) {
-  if (n === 0) return;
-  printNumber(n - 1);
-  console.log(n);
+function sumOfNumber(n) {
+  if (n === 0) return 0;
+  return n + sumOfNumber(n - 1);
 }
-printNumber(n);
+console.log(sumOfNumber(n));
