@@ -4,7 +4,9 @@
 //   let min = i;
 //   for (let j = i + 1; j < arr.length; j++) {
 //     if (arr[j] < arr[min]) min = j;
-//     [arr[min], arr[i]] = [arr[i], arr[min]];
+//     if (min !== i) {
+//       [arr[min], arr[i]] = [arr[i], arr[min]];
+//     }
 //   }
 // }
 // console.log(arr);
@@ -24,12 +26,12 @@
 // console.log(arr);
 
 // Question 3: Insertion Sort
-let arr = [13, 46, 24, 52, 20, 9];
-for (let i = 0; i < arr.length; i++) {
-  let j = i;
-  while (j > 0 && arr[j - 1] > arr[j]) {
-    [arr[j - 1], arr[j]] = [arr[j], arr[j - 1]];
-    j--;
-  }
-}
-console.log(arr);
+// let arr = [13, 46, 24, 52, 20, 9];
+// for (let i = 0; i < arr.length; i++) {
+//   let j = i;
+//   while (j > 0 && arr[j - 1] > arr[j]) {
+//     [arr[j - 1], arr[j]] = [arr[j], arr[j - 1]];
+//     j--;
+//   }
+// }
+// console.log(arr);
