@@ -1,4 +1,7 @@
 // Question 1: Selection Sort
+// Description: Find minimum element and place it at beginning in each iteration
+// Time Complexity: O(n²)
+// Space Complexity: O(1)
 // let arr = [13, 46, 24, 52, 20, 9];
 // for (let i = 0; i < arr.length - 1; i++) {
 //   let min = i;
@@ -12,6 +15,10 @@
 // console.log(arr);
 
 // Question 2: Bubble Sort
+// Description: Repeatedly swap adjacent elements if they are in wrong order
+// Time Complexity: O(n²)
+// Space Complexity: O(1)
+// Best Case: O(n) when array is already sorted
 // let arr = [13, 46, 24, 52, 20, 9];
 // for (let i = 0; i < arr.length - 1; i++) {
 //   let sorted = true;
@@ -26,6 +33,10 @@
 // console.log(arr);
 
 // Question 3: Insertion Sort
+// Description: Build sorted array one element at a time by placing each element at its correct position
+// Time Complexity: O(n²)
+// Space Complexity: O(1)
+// Best Case: O(n) when array is nearly sorted
 // let arr = [13, 46, 24, 52, 20, 9];
 // for (let i = 0; i < arr.length; i++) {
 //   let j = i;
