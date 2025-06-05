@@ -81,28 +81,28 @@
 // and partitioning the array around it recursively
 // Time Complexity: O(n log n) average case, O(n²) worst case
 // Space Complexity: O(log n) - due to recursion stack
-function findPivotIdx(arr, first, last) {
-  let pivot = arr[first];
-  let i = first + 1;
-  let j = last;
-  while (i <= j) {
-    while (i <= last && arr[i] <= pivot) i++;
-    while (j >= first && arr[j] > pivot) j--;
-    if (i < j) {
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-      i++;
-      j--;
-    }
-  }
-  [arr[first], arr[j]] = [arr[j], arr[first]];
-  return j;
-}
-function quickSort(arr, first, last) {
-  if (first >= last) return;
-  let pivotIdx = findPivotIdx(arr, first, last);
-  quickSort(arr, first, pivotIdx - 1);
-  quickSort(arr, pivotIdx + 1, last);
-}
-let arr = [3, 2, 8, 5, 1, 4, 23];
-quickSort(arr, 0, arr.length - 1);
-console.log(arr);
+// function findPivotIdx(arr, first, last) {
+//   let pivot = arr[first];
+//   let i = first + 1;
+//   let j = last;
+//   while (i <= j) {
+//     while (i <= last && arr[i] <= pivot) i++;
+//     while (j >= first && arr[j] > pivot) j--;
+//     if (i < j) {
+//       [arr[i], arr[j]] = [arr[j], arr[i]];
+//       i++;
+//       j--;
+//     }
+//   }
+//   [arr[first], arr[j]] = [arr[j], arr[first]];
+//   return j;
+// }
+// function quickSort(arr, first, last) {
+//   if (first >= last) return;
+//   let pivotIdx = findPivotIdx(arr, first, last);
+//   quickSort(arr, first, pivotIdx - 1);
+//   quickSort(arr, pivotIdx + 1, last);
+// }
+// let arr = [3, 2, 8, 5, 1, 4, 23];
+// quickSort(arr, 0, arr.length - 1);
+// console.log(arr);
