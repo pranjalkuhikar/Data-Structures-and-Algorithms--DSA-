@@ -36,16 +36,30 @@
 // divide(arr, 0, arr.length - 1);
 // console.log(arr);
 
-function bubbleSortRecursive(arr, n) {
-  if (n === 1) return;
-  for (let i = 0; i < n - 1; i++) {
-    if (arr[i] > arr[i + 1]) {
-      [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
-    }
-  }
-  bubbleSortRecursive(arr, n - 1);
-}
+// function bubbleSortRecursive(arr, n) {
+//   if (n === 1) return;
+//   for (let i = 0; i < n - 1; i++) {
+//     if (arr[i] > arr[i + 1]) {
+//       [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+//     }
+//   }
+//   bubbleSortRecursive(arr, n - 1);
+// }
+// let arr = [3, 2, 8, 5, 1, 4, 23];
+// bubbleSortRecursive(arr, arr.length);
+// console.log(arr);
 
+function insertionSortRecursive(arr, n) {
+  if (n <= 1) return;
+  insertionSortRecursive(arr, n - 1);
+  let key = arr[n - 1];
+  let j = n - 2;
+  while (j >= 0 && arr[j] > key) {
+    arr[j + 1] = arr[j];
+    j--;
+  }
+  arr[j + 1] = key;
+}
 let arr = [3, 2, 8, 5, 1, 4, 23];
-bubbleSortRecursive(arr, arr.length);
+insertionSortRecursive(arr, arr.length);
 console.log(arr);
