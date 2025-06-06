@@ -8,24 +8,36 @@
 //   }
 //   return max;
 // }
-
 // let arr = [8, 10, 5, 7, 9];
 // console.log(findLargest(arr));
 
 // Question 2: Find the second maximum element in an array
-function findSecondLargest(arr) {
-  let max = arr[0];
-  let sMax = arr[0];
+// function findSecondLargest(arr) {
+//   let max = arr[0];
+//   let sMax = arr[0];
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] > max) {
+//       sMax = max;
+//       max = arr[i];
+//     } else if (arr[i] > sMax && arr[i] != max) {
+//       sMax = arr[i];
+//     }
+//   }
+//   return sMax;
+// }
+// let arr = [8, 10, 10, 9, 5, 7, 9];
+// console.log(findSecondLargest(arr));
+
+// Question 3: Check if an array is sorted
+function sortedArray(arr) {
+  let isSorted = true;
   for (let i = 0; i < arr.length; i++) {
-    if (arr[i] > max) {
-      sMax = max;
-      max = arr[i];
-    } else if (arr[i] > sMax && arr[i] != max) {
-      sMax = arr[i];
+    if (arr[i] > arr[i + 1]) {
+      isSorted = false;
+      break;
     }
   }
-  return sMax;
+  return isSorted;
 }
-
-let arr = [8, 10, 10, 9, 5, 7, 9];
-console.log(findSecondLargest(arr));
+let arr = [1, 2, 3, 4, 5];
+console.log(sortedArray(arr));
