@@ -29,15 +29,38 @@
 // console.log(findSecondLargest(arr));
 
 // Question 3: Check if an array is sorted
-function sortedArray(arr) {
-  let isSorted = true;
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] > arr[i + 1]) {
-      isSorted = false;
-      break;
+// function sortedArray(arr) {
+//   let isSorted = true;
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] > arr[i + 1]) {
+//       isSorted = false;
+//       break;
+//     }
+//   }
+//   return isSorted;
+// }
+// let arr = [1, 2, 3, 4, 5];
+// console.log(sortedArray(arr));
+
+// Question 4: Remove duplicates from an array
+function removeDuplicateSet(arr) {
+  let set = new Set(arr);
+  return set;
+}
+function removeDuplicate(arr) {
+  let i = 0;
+  for (let j = 1; j < arr.length; j++) {
+    if (arr[i] != arr[j]) {
+      i++;
+      arr[i] = arr[j];
     }
   }
-  return isSorted;
+  return i + 1;
 }
-let arr = [1, 2, 3, 4, 5];
-console.log(sortedArray(arr));
+let arr = [1, 1, 2, 2, 3, 3, 4, 5, 5];
+console.log([...removeDuplicateSet(arr)]);
+// If when array is sorted
+let n = removeDuplicate(arr);
+for (let i = 0; i < n; i++) {
+  console.log(arr[i]);
+}
