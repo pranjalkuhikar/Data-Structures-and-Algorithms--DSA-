@@ -78,10 +78,43 @@
 // }
 
 // Question 5: Left Rotate the Array by One
-let arr = [1, 2, 3, 4, 5];
-let temp = arr[0];
-for (let i = 0; i < arr.length; i++) {
-  arr[i] = arr[i + 1];
+// Time Complexity: O(n) - single pass through array
+// Space Complexity: O(1) - in-place modification
+// let arr = [1, 2, 3, 4, 5];
+// let temp = arr[0];
+// for (let i = 0; i < arr.length; i++) {
+//   arr[i] = arr[i + 1];
+// }
+// arr[arr.length - 1] = temp;
+// console.log(arr);
+
+// Question 6: Rotate array by K elements
+// Time Complexity: O(n) - single pass through array
+// Space Complexity: O(1) - in-place modification
+function reverse(arr, left, right) {
+  while (left < right) {
+    [arr[left], arr[right]] = [arr[right], arr[left]];
+    left++;
+    right--;
+  }
 }
-arr[arr.length - 1] = temp;
-console.log(arr);
+let arr = [1, 2, 3, 4, 5];
+let k = 2;
+
+function leftRotation(arr, k) {
+  k = k % arr.length;
+  reverse(arr, 0, k - 1);
+  reverse(arr, k, arr.length - 1);
+  reverse(arr, 0, arr.length - 1);
+  return arr;
+}
+function rightRotation(arr, k) {
+  k = k % arr.length;
+  reverse(arr, 0, arr.length - k - 1);
+  reverse(arr, arr.length - k, arr.length - 1);
+  reverse(arr, 0, arr.length - 1);
+  return arr;
+}
+
+console.log(leftRotation([...arr], k));
+console.log(rightRotation([...arr], k));
