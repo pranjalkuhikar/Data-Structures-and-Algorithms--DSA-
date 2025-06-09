@@ -87,13 +87,13 @@
 // }
 // arr[arr.length - 1] = temp;
 // console.log(arr);
-let arr = [1, 2, 3, 4, 5];
-let temp = arr[arr.length - 1];
-for (let i = arr.length - 1; i > 0; i--) {
-  arr[i] = arr[i - 1];
-}
-arr[0] = temp;
-console.log(arr);
+// let arr = [1, 2, 3, 4, 5];
+// let temp = arr[arr.length - 1];
+// for (let i = arr.length - 1; i > 0; i--) {
+//   arr[i] = arr[i - 1];
+// }
+// arr[0] = temp;
+// console.log(arr);
 
 // Question 6: Rotate array by K elements
 // Time Complexity: O(n) - single pass through array
@@ -107,7 +107,6 @@ console.log(arr);
 // }
 // let arr = [1, 2, 3, 4, 5];
 // let k = 2;
-
 // function leftRotation(arr, k) {
 //   k = k % arr.length;
 //   reverse(arr, 0, k - 1);
@@ -122,6 +121,34 @@ console.log(arr);
 //   reverse(arr, 0, arr.length - 1);
 //   return arr;
 // }
-
 // console.log(leftRotation([...arr], k));
 // console.log(rightRotation([...arr], k));
+
+// Question 7: Move all zeroes to end of array
+// Time Complexity: O(n^2) - single pass through array
+// Space Complexity: O(1) - in-place modification
+// let arr = [1, 0, 2, 3, 0, 4, 0, 1];
+// for (let i = 0; i < arr.length; i++) {
+//   let j = i;
+//   for (let k = i; k < arr.length; k++) {
+//     if (arr[k] !== 0) {
+//       [arr[j], arr[k]] = [arr[k], arr[j]];
+//       j++;
+//     }
+//   }
+// }
+// console.log(arr);
+
+// Time Complexity: O(n) - single pass through array
+// Space Complexity: O(1) - in-place modification
+let arr = [1, 0, 2, 3, 0, 4, 0, 1];
+let i = 0;
+let j = 0;
+while (i < arr.length) {
+  if (arr[i] != 0) {
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+    j++;
+  }
+  i++;
+}
+console.log(arr);
