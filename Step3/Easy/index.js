@@ -141,14 +141,29 @@
 
 // Time Complexity: O(n) - single pass through array
 // Space Complexity: O(1) - in-place modification
-let arr = [1, 0, 2, 3, 0, 4, 0, 1];
-let i = 0;
-let j = 0;
-while (i < arr.length) {
-  if (arr[i] != 0) {
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-    j++;
+// let arr = [1, 0, 2, 3, 0, 4, 0, 1];
+// let i = 0;
+// let j = 0;
+// while (i < arr.length) {
+//   if (arr[i] != 0) {
+//     [arr[i], arr[j]] = [arr[j], arr[i]];
+//     j++;
+//   }
+//   i++;
+// }
+// console.log(arr);
+
+// Question 8 : Linear Search
+// Time Complexity: O(n) - single pass through array
+// Space Complexity: O(1) - in-place modification
+function linearSearch(arr, k) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === k) {
+      return i;
+    }
   }
-  i++;
+  return -1;
 }
-console.log(arr);
+let arr = [13, 46, 24, 52, 20, 9];
+let k = 52;
+console.log(linearSearch(arr, k));
