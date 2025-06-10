@@ -179,12 +179,26 @@
 // Question 10 : Find the missing number in an array
 // Time Complexity: O(n) - single pass through array
 // Space Complexity: O(1) - in-place modification
-let arr = [1, 2, 3, 5];
-let sum = 0;
-let n = arr.length + 1;
-let total = (n * (n + 1)) / 2;
+// let arr = [1, 2, 3, 5];
+// let sum = 0;
+// let n = arr.length + 1;
+// let total = (n * (n + 1)) / 2;
+// for (let i = 0; i < arr.length; i++) {
+//   sum += arr[i];
+// }
+// let missing = total - sum;
+// console.log(missing);
+
+// Question 11: Count max Consecutive One's in an array
+let arr = [1, 0, 1, 1, 0, 1];
+let count = 0;
+let ans = 0;
 for (let i = 0; i < arr.length; i++) {
-  sum += arr[i];
+  if (arr[i] === 1) {
+    count++;
+    ans = Math.max(count, ans);
+  } else {
+    count = 0;
+  }
 }
-let missing = total - sum;
-console.log(missing);
+console.log(ans);
