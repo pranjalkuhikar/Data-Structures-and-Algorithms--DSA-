@@ -208,18 +208,27 @@
 // Question 12: Single Number
 // Time Complexity: O(n^2) - single pass through array
 // Space Complexity: O(1) - in-place modification
-let arr = [2, 2, 1];
-let count = 0;
+// let arr = [2, 2, 1];
+// let count = 0;
+// let ans = 0;
+// for (let i = 0; i < arr.length; i++) {
+//   count = 0;
+//   for (let j = 0; j < arr.length; j++) {
+//     if (arr[i] === arr[j]) {
+//       count++;
+//     }
+//   }
+//   if (count === 1) {
+//     ans = arr[i];
+//   }
+// }
+// console.log(ans);
+
+// Time Complexity: O(n) - single pass through array
+// Space Complexity: O(1) - in-place modification
+let arr = [1, 2, 2];
 let ans = 0;
 for (let i = 0; i < arr.length; i++) {
-  count = 0;
-  for (let j = 0; j < arr.length; j++) {
-    if (arr[i] === arr[j]) {
-      count++;
-    }
-  }
-  if (count === 1) {
-    ans = arr[i];
-  }
+  ans ^= arr[i];
 }
 console.log(ans);
