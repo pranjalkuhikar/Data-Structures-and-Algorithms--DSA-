@@ -12,6 +12,10 @@
   - [6. Rotate Array by K Elements](#6-rotate-array-by-k-elements)
   - [7. Move Zeroes to End](#7-move-zeroes-to-end)
   - [8. Linear Search](#8-linear-search)
+  - [9. Union of Two Sorted Arrays](#9-union-of-two-sorted-arrays)
+  - [10. Find Missing Number](#10-find-missing-number)
+  - [11. Count Max Consecutive Ones](#11-count-max-consecutive-ones)
+  - [12. Single Number](#12-single-number)
 - [Time & Space Complexity](#time--space-complexity)
 
 ## Overview
@@ -28,7 +32,7 @@ This repository contains solutions to common array problems implemented in JavaS
 
 ```javascript
 function findLargest(arr) {
-  let max = 0;
+  let max = arr[0];
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] > max) {
       max = arr[i];
@@ -105,7 +109,7 @@ Final:  max = 10, sMax = 9   ← Second largest found
 ```javascript
 function sortedArray(arr) {
   let isSorted = true;
-  for (let i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length - 1; i++) {
     if (arr[i] > arr[i + 1]) {
       isSorted = false;
       break;
@@ -179,38 +183,32 @@ Final:  [1, 2, 3, 4, 5]              ← Final unique elements
 
 ### 5. Left Rotate Array by One
 
-**Problem:** Rotate all elements of an array to the left by one position. The first element moves to the last position.
+**Problem:** Rotate all elements of an array to the left by one position
 
 **Solution:**
 
 ```javascript
-let arr = [1, 2, 3, 4, 5]; // Example Input
+let arr = [1, 2, 3, 4, 5];
 let temp = arr[0];
 for (let i = 0; i < arr.length - 1; i++) {
   arr[i] = arr[i + 1];
 }
 arr[arr.length - 1] = temp;
-console.log(arr); // Output: [2, 3, 4, 5, 1]
+console.log(arr);
 ```
-
-**Explanation:**
-
-1. Store first element in temp
-2. Shift all elements one position left
-3. Place temp at last position
 
 **Example:**
 
 ```javascript
-Input: arr = [1, 2, 3, 4, 5];
+Input: [1, 2, 3, 4, 5];
 Output: [2, 3, 4, 5, 1];
 ```
 
 ### 6. Rotate Array by K Elements
 
-**Problem:** Rotate the elements of an array to the left or right by `k` positions.
+**Problem:** Rotate the elements of an array to the left or right by `k` positions
 
-**Solution (Optimal Approach using Reversal Algorithm):**
+**Solution:**
 
 ```javascript
 function reverse(arr, left, right) {
@@ -222,30 +220,21 @@ function reverse(arr, left, right) {
 }
 
 function leftRotation(arr, k) {
-  const n = arr.length;
-  k = k % n;
-  if (k === 0) return arr;
+  k = k % arr.length;
   reverse(arr, 0, k - 1);
-  reverse(arr, k, n - 1);
-  reverse(arr, 0, n - 1);
+  reverse(arr, k, arr.length - 1);
+  reverse(arr, 0, arr.length - 1);
   return arr;
 }
 
 function rightRotation(arr, k) {
-  const n = arr.length;
-  k = k % n;
-  if (k === 0) return arr;
-  reverse(arr, 0, n - k - 1);
-  reverse(arr, n - k, n - 1);
-  reverse(arr, 0, n - 1);
+  k = k % arr.length;
+  reverse(arr, 0, arr.length - k - 1);
+  reverse(arr, arr.length - k, arr.length - 1);
+  reverse(arr, 0, arr.length - 1);
   return arr;
 }
 ```
-
-**Explanation:**
-
-- Left Rotation: Reverse first k elements, then remaining elements, then entire array
-- Right Rotation: Reverse first n-k elements, then last k elements, then entire array
 
 **Example:**
 
@@ -257,9 +246,9 @@ Output: [4, 5, 1, 2, 3]; // Right rotation
 
 ### 7. Move Zeroes to End
 
-**Problem:** Given an array of integers, move all the zeroes to the end of the array while maintaining the relative order of the non-zero elements.
+**Problem:** Move all zeroes to the end of the array while maintaining relative order
 
-**Solution (Optimal Approach - Two Pointers):**
+**Solution:**
 
 ```javascript
 let arr = [1, 0, 2, 3, 0, 4, 0, 1];
@@ -272,25 +261,19 @@ while (i < arr.length) {
   }
   i++;
 }
-console.log(arr); // Output: [1, 2, 3, 4, 1, 0, 0, 0]
+console.log(arr);
 ```
-
-**Explanation:**
-
-- Use two pointers: i for scanning, j for placing non-zero elements
-- When non-zero element found, swap with j position and increment j
-- Maintains relative order of non-zero elements
 
 **Example:**
 
 ```javascript
-Input: arr = [1, 0, 2, 3, 0, 4, 0, 1];
+Input: [1, 0, 2, 3, 0, 4, 0, 1];
 Output: [1, 2, 3, 4, 1, 0, 0, 0];
 ```
 
 ### 8. Linear Search
 
-**Problem:** Given an array of integers and a target value `k`, find the index of `k` in the array. If `k` is not present, return -1.
+**Problem:** Find the index of a target value in an array
 
 **Solution:**
 
@@ -305,19 +288,151 @@ function linearSearch(arr, k) {
 }
 ```
 
-**Explanation:**
-
-- Sequentially check each element
-- Return index if found, -1 if not found
-
 **Example:**
 
 ```javascript
 Input: (arr = [13, 46, 24, 52, 20, 9]), (k = 52);
 Output: 3;
+```
 
-Input: (arr = [13, 46, 24, 52, 20, 9]), (k = 100);
-Output: -1;
+### 9. Union of Two Sorted Arrays
+
+**Problem:** Find the union of two sorted arrays
+
+**Solution:**
+
+```javascript
+let arr1 = [1, 2, 3, 4, 5];
+let arr2 = [2, 3, 4, 4, 5];
+let temp = [...new Set([...arr1, ...arr2])];
+console.log(temp);
+```
+
+**Explanation:**
+
+- Combine both arrays using spread operator
+- Use Set to remove duplicates
+- Convert back to array using spread operator
+
+**Example:**
+
+```javascript
+Input: (arr1 = [1, 2, 3, 4, 5]), (arr2 = [2, 3, 4, 4, 5]);
+Output: [1, 2, 3, 4, 5];
+```
+
+### 10. Find Missing Number
+
+**Problem:** Find the missing number in an array of consecutive numbers
+
+**Solution:**
+
+```javascript
+let arr = [1, 2, 3, 5];
+let sum = 0;
+let n = arr.length + 1;
+let total = (n * (n + 1)) / 2;
+for (let i = 0; i < arr.length; i++) {
+  sum += arr[i];
+}
+let missing = total - sum;
+console.log(missing);
+```
+
+**Explanation:**
+
+- Calculate expected sum using formula: n\*(n+1)/2
+- Calculate actual sum of array elements
+- Missing number = expected sum - actual sum
+
+**Example:**
+
+```javascript
+Input: [1, 2, 3, 5];
+Output: 4;
+```
+
+### 11. Count Max Consecutive Ones
+
+**Problem:** Find the maximum number of consecutive 1's in an array
+
+**Solution:**
+
+```javascript
+let arr = [1, 0, 1, 1, 0, 1];
+let count = 0;
+let ans = 0;
+for (let i = 0; i < arr.length; i++) {
+  if (arr[i] === 1) {
+    count++;
+    ans = Math.max(count, ans);
+  } else {
+    count = 0;
+  }
+}
+console.log(ans);
+```
+
+**Explanation:**
+
+- Keep track of current consecutive count
+- Update maximum count when 1 is found
+- Reset count when 0 is found
+- Return maximum count found
+
+**Example:**
+
+```javascript
+Input: [1, 0, 1, 1, 0, 1];
+Output: 2;
+```
+
+### 12. Single Number
+
+**Problem:** Find the number that appears only once in an array
+
+**Solution (Method 1 - Using Count):**
+
+```javascript
+let arr = [2, 2, 1];
+let count = 0;
+let ans = 0;
+for (let i = 0; i < arr.length; i++) {
+  count = 0;
+  for (let j = 0; j < arr.length; j++) {
+    if (arr[i] === arr[j]) {
+      count++;
+    }
+  }
+  if (count === 1) {
+    ans = arr[i];
+  }
+}
+console.log(ans);
+```
+
+**Solution (Method 2 - Using XOR):**
+
+```javascript
+let arr = [1, 2, 2];
+let ans = 0;
+for (let i = 0; i < arr.length; i++) {
+  ans ^= arr[i];
+}
+console.log(ans);
+```
+
+**Explanation:**
+
+- Method 1: Count occurrences of each number
+- Method 2: Use XOR operation (a^a = 0, a^0 = a)
+- XOR all numbers to get the single number
+
+**Example:**
+
+```javascript
+Input: [1, 2, 2];
+Output: 1;
 ```
 
 ## Time & Space Complexity
@@ -332,6 +447,10 @@ Output: -1;
 | Rotate by K        | O(n) | O(1)      | Reversal algorithm     |
 | Move Zeroes to End | O(n) | O(1)      | Two-pointer, in-place  |
 | Linear Search      | O(n) | O(1)      | Single pass            |
+| Union of Arrays    | O(n) | O(n)      | Set operation          |
+| Find Missing       | O(n) | O(1)      | Sum formula            |
+| Max Consecutive    | O(n) | O(1)      | Single pass            |
+| Single Number      | O(n) | O(1)      | XOR operation          |
 
 ## Usage
 
@@ -350,7 +469,11 @@ console.log(functionName(arr));
 - In-place modifications where possible
 - Early termination when applicable
 - Multiple approaches for some problems
+- Efficient algorithms for each problem
+- Clear examples and explanations
+- Bit manipulation techniques (XOR)
+- Mathematical formulas for optimization
 
 ---
 
-_Last Updated: June 2025_
+_Last Updated: March 2024_
