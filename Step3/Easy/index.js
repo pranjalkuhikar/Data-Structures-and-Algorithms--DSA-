@@ -171,7 +171,20 @@
 // Question 9: Union of Two Sorted Arrays
 // Time Complexity: O(n+m) - single pass through array
 // Space Complexity: O(n+m) - storing unique elements in Set
-let arr1 = [1, 2, 3, 4, 5];
-let arr2 = [2, 3, 4, 4, 5];
-let temp = [...new Set([...arr1, ...arr2])];
-console.log(temp);
+// let arr1 = [1, 2, 3, 4, 5];
+// let arr2 = [2, 3, 4, 4, 5];
+// let temp = [...new Set([...arr1, ...arr2])];
+// console.log(temp);
+
+// Question 10 : Find the missing number in an array
+// Time Complexity: O(n) - single pass through array
+// Space Complexity: O(1) - in-place modification
+let arr = [1, 2, 3, 5];
+let sum = 0;
+let n = arr.length + 1;
+let total = (n * (n + 1)) / 2;
+for (let i = 0; i < arr.length; i++) {
+  sum += arr[i];
+}
+let missing = total - sum;
+console.log(missing);
