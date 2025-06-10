@@ -2,7 +2,7 @@
 // Time Complexity: O(n) - single pass through array
 // Space Complexity: O(1) - only using one variable
 // function findLargest(arr) {
-//   let max = 0;
+//   let max = arr[0];
 //   for (let i = 0; i < arr.length; i++) {
 //     if (arr[i] > max) {
 //       max = arr[i];
@@ -37,7 +37,7 @@
 // Space Complexity: O(1) - using only boolean variable
 // function sortedArray(arr) {
 //   let isSorted = true;
-//   for (let i = 0; i < arr.length; i++) {
+//   for (let i = 0; i < arr.length-1; i++) {
 //     if (arr[i] > arr[i + 1]) {
 //       isSorted = false;
 //       break;
@@ -167,3 +167,11 @@
 // let arr = [13, 46, 24, 52, 20, 9];
 // let k = 52;
 // console.log(linearSearch(arr, k));
+
+// Question 9: Union of Two Sorted Arrays
+// Time Complexity: O(n+m) - single pass through array
+// Space Complexity: O(n+m) - storing unique elements in Set
+let arr1 = [1, 2, 3, 4, 5];
+let arr2 = [2, 3, 4, 4, 5];
+let temp = [...new Set([...arr1, ...arr2])];
+console.log(temp);
