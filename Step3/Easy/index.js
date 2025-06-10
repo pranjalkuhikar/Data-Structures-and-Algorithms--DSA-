@@ -226,9 +226,9 @@
 
 // Time Complexity: O(n) - single pass through array
 // Space Complexity: O(1) - in-place modification
-let arr = [1, 2, 2];
-let ans = 0;
-for (let i = 0; i < arr.length; i++) {
-  ans ^= arr[i];
-}
-console.log(ans);
+// let arr = [1, 2, 2];
+// let ans = 0;
+// for (let i = 0; i < arr.length; i++) {
+//   ans ^= arr[i];
+// }
+// console.log(ans);
