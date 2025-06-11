@@ -26,12 +26,32 @@
 // Question 2: Sort an array of 0s, 1s and 2s
 // Time Complexity: O(n^2) - nested loops
 // Space Complexity: O(1) - in-place modification
+// let arr = [2, 0, 2, 1, 1, 0];
+// for (let i = 0; i < arr.length; i++) {
+//   for (let j = i + 1; j < arr.length; j++) {
+//     if (arr[i] > arr[j]) {
+//       [arr[i], arr[j]] = [arr[j], arr[i]];
+//     }
+//   }
+// }
+// console.log(arr);
+
+// Time Complexity: O(n) - single pass through array
+// Space Complexity: O(1) - in-place modification
 let arr = [2, 0, 2, 1, 1, 0];
-for (let i = 0; i < arr.length; i++) {
-  for (let j = i + 1; j < arr.length; j++) {
-    if (arr[i] > arr[j]) {
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
+let low = 0;
+let mid = 0;
+let high = arr.length - 1;
+while (mid <= high) {
+  if (arr[mid] === 0) {
+    [arr[low], arr[mid]] = [arr[mid], arr[low]];
+    low++;
+    mid++;
+  } else if (arr[mid] === 1) {
+    mid++;
+  } else {
+    [arr[mid], arr[high]] = [arr[high], arr[mid]];
+    high--;
   }
 }
 console.log(arr);
