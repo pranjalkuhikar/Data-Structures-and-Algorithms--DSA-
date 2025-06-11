@@ -262,22 +262,22 @@
 // Question 14: Longest subarray with sum K (Positives + Negatives)
 // Time Complexity: O(n) - single pass through array
 // Space Complexity: O(n) - storing sum in map
-let arr = [-1, 1, 1];
-let k = 1;
-let map = new Map();
-let sum = 0;
-let maxLen = 0;
-for (let i = 0; i < arr.length; i++) {
-  sum += arr[i];
-  if (sum === k) {
-    maxLen = i + 1;
-  }
-  if (map.has(sum - k)) {
-    let prevIndex = map.get(sum - k);
-    maxLen = Math.max(maxLen, i - prevIndex);
-  }
-  if (!map.has(sum)) {
-    map.set(sum, i);
-  }
-}
-console.log("Longest subarray with sum", k, "is", maxLen);
+// let arr = [-1, 1, 1];
+// let k = 1;
+// let map = new Map();
+// let sum = 0;
+// let maxLen = 0;
+// for (let i = 0; i < arr.length; i++) {
+//   sum += arr[i];
+//   if (sum === k) {
+//     maxLen = i + 1;
+//   }
+//   if (map.has(sum - k)) {
+//     let prevIndex = map.get(sum - k);
+//     maxLen = Math.max(maxLen, i - prevIndex);
+//   }
+//   if (!map.has(sum)) {
+//     map.set(sum, i);
+//   }
+// }
+// console.log("Longest subarray with sum", k, "is", maxLen);

@@ -16,6 +16,8 @@
   - [10. Find Missing Number](#10-find-missing-number)
   - [11. Count Max Consecutive Ones](#11-count-max-consecutive-ones)
   - [12. Single Number](#12-single-number)
+  - [13. Longest Subarray with given Sum K (Positive Numbers)](#13-longest-subarray-with-given-sum-k-positive-numbers)
+  - [14. Longest Subarray with Sum K (Positive + Negative Numbers)](#14-longest-subarray-with-sum-k-positive--negative-numbers)
 - [Time & Space Complexity](#time--space-complexity)
 
 ## Overview
@@ -435,22 +437,112 @@ Input: [1, 2, 2];
 Output: 1;
 ```
 
+### 13. Longest Subarray with given Sum K (Positive Numbers)
+
+**Problem:** Find the length of the longest subarray with sum equal to K (for positive numbers only)
+
+**Solution:**
+
+```javascript
+let arr = [2, 3, 5, 1, 9];
+let k = 10;
+let count = 0;
+let ans = 0;
+for (let i = 0; i < arr.length; i++) {
+  let sum = 0;
+  for (let j = i; j < arr.length; j++) {
+    sum += arr[j];
+    if (sum === k) {
+      count++;
+      ans = Math.max(ans, j - i + 1);
+    }
+  }
+}
+```
+
+**Example:**
+
+```javascript
+Input: arr = [2, 3, 5, 1, 9], k = 10
+Output: 3 (Subarray [2, 3, 5] has sum 10)
+```
+
+**Time Complexity:** O(n²)
+
+- We use nested loops to check all possible subarrays
+- Outer loop runs n times
+- Inner loop runs n times in worst case
+- Total: O(n²)
+
+**Space Complexity:** O(1)
+
+- We only use a few variables (count, ans, sum)
+- No extra space proportional to input size
+
+### 14. Longest Subarray with Sum K (Positive + Negative Numbers)
+
+**Problem:** Find the length of the longest subarray with sum equal to K (handles both positive and negative numbers)
+
+**Solution:**
+
+```javascript
+let arr = [-1, 1, 1];
+let k = 1;
+let map = new Map();
+let sum = 0;
+let maxLen = 0;
+for (let i = 0; i < arr.length; i++) {
+  sum += arr[i];
+  if (sum === k) {
+    maxLen = i + 1;
+  }
+  if (map.has(sum - k)) {
+    let prevIndex = map.get(sum - k);
+    maxLen = Math.max(maxLen, i - prevIndex);
+  }
+  if (!map.has(sum)) {
+    map.set(sum, i);
+  }
+}
+```
+
+**Example:**
+
+```javascript
+Input: arr = [-1, 1, 1], k = 1
+Output: 2 (Subarray [1, 1] has sum 1)
+```
+
+**Time Complexity:** O(n)
+
+- Single pass through the array
+- Hash map operations (get, set) are O(1) on average
+- Total: O(n)
+
+**Space Complexity:** O(n)
+
+- We store prefix sums in a hash map
+- In worst case, we might need to store n different prefix sums
+- Total: O(n)
+
 ## Time & Space Complexity
 
-| Problem            | Time | Space     | Notes                  |
-| ------------------ | ---- | --------- | ---------------------- |
-| Find Maximum       | O(n) | O(1)      | Single pass            |
-| Second Maximum     | O(n) | O(1)      | Single pass, 2 vars    |
-| Check Sorted       | O(n) | O(1)      | Early break possible   |
-| Remove Duplicates  | O(n) | O(n)/O(1) | Set/Two-pointer method |
-| Left Rotate by One | O(n) | O(1)      | Single pass, in-place  |
-| Rotate by K        | O(n) | O(1)      | Reversal algorithm     |
-| Move Zeroes to End | O(n) | O(1)      | Two-pointer, in-place  |
-| Linear Search      | O(n) | O(1)      | Single pass            |
-| Union of Arrays    | O(n) | O(n)      | Set operation          |
-| Find Missing       | O(n) | O(1)      | Sum formula            |
-| Max Consecutive    | O(n) | O(1)      | Single pass            |
-| Single Number      | O(n) | O(1)      | XOR operation          |
+| Problem                     | Time  | Space     | Notes                         |
+| --------------------------- | ----- | --------- | ----------------------------- |
+| Find Maximum                | O(n)  | O(1)      | Single pass                   |
+| Second Maximum              | O(n)  | O(1)      | Single pass, 2 vars           |
+| Check Sorted                | O(n)  | O(1)      | Early break possible          |
+| Remove Duplicates           | O(n)  | O(n)/O(1) | Set/Two-pointer method        |
+| Left Rotate by One          | O(n)  | O(1)      | Single pass, in-place         |
+| Rotate by K                 | O(n)  | O(1)      | Reversal algorithm            |
+| Move Zeroes to End          | O(n)  | O(1)      | Two-pointer, in-place         |
+| Linear Search               | O(n)  | O(1)      | Single pass                   |
+| Union of Arrays             | O(n)  | O(n)      | Set operation                 |
+| Find Missing                | O(n)  | O(1)      | Sum formula                   |
+| Max Consecutive             | O(n)  | O(1)      | Single pass                   |
+| Single Number               | O(n)  | O(1)      | XOR operation                 |
+| Longest Subarray (Positive) | O(n²) | O(1)      | Nested loops, all subarrays   |
+| Longest Subarray (Pos+Neg)  | O(n)  | O(n)      | Hash map, prefix sum approach |
 
 ## Usage
 
