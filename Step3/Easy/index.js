@@ -236,26 +236,48 @@
 // Question 13: Longest Subarray with given Sum K
 // Time Complexity: O(n^2) - single pass through array
 // Space Complexity: O(1) - in-place modification
-let arr = [2, 3, 5, 1, 9];
-let k = 10;
-let count = 0;
-let ans = 0;
+// let arr = [2, 3, 5, 1, 9];
+// let k = 10;
+// let count = 0;
+// let ans = 0;
+// for (let i = 0; i < arr.length; i++) {
+//   let sum = 0;
+//   for (let j = i; j < arr.length; j++) {
+//     sum += arr[j];
+//     if (sum === k) {
+//       count++;
+//       ans = Math.max(ans, j - i + 1);
+//     }
+//   }
+// }
+// console.log(
+//   "Longest Subarray with given Sum ",
+//   k,
+//   "is",
+//   ans,
+//   "and count of subarray is",
+//   count
+// );
 
+// Question 14: Longest subarray with sum K (Positives + Negatives)
+// Time Complexity: O(n) - single pass through array
+// Space Complexity: O(n) - storing sum in map
+let arr = [-1, 1, 1];
+let k = 1;
+let map = new Map();
+let sum = 0;
+let maxLen = 0;
 for (let i = 0; i < arr.length; i++) {
-  let sum = 0;
-  for (let j = i; j < arr.length; j++) {
-    sum += arr[j];
-    if (sum === k) {
-      count++;
-      ans = Math.max(ans, j - i + 1);
-    }
+  sum += arr[i];
+  if (sum === k) {
+    maxLen = i + 1;
+  }
+  if (map.has(sum - k)) {
+    let prevIndex = map.get(sum - k);
+    maxLen = Math.max(maxLen, i - prevIndex);
+  }
+  if (!map.has(sum)) {
+    map.set(sum, i);
   }
 }
-console.log(
-  "Longest Subarray with given Sum ",
-  k,
-  "is",
-  ans,
-  "and count of subarray is",
-  count
-);
+console.log("Longest subarray with sum", k, "is", maxLen);
