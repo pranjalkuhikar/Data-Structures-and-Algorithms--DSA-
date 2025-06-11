@@ -13,12 +13,25 @@
 
 // Time Complexity: O(n) - single pass through array
 // Space Complexity: O(n) - storing sum in map
-let arr = [2, 6, 5, 8, 11];
-let k = 14;
-let map = new Map();
+// let arr = [2, 6, 5, 8, 11];
+// let k = 14;
+// let map = new Map();
+// for (let i = 0; i < arr.length; i++) {
+//   if (map.has(k - arr[i])) {
+//     console.log(arr[i], k - arr[i]);
+//   }
+//   map.set(arr[i], i);
+// }
+
+// Question 2: Sort an array of 0s, 1s and 2s
+// Time Complexity: O(n^2) - nested loops
+// Space Complexity: O(1) - in-place modification
+let arr = [2, 0, 2, 1, 1, 0];
 for (let i = 0; i < arr.length; i++) {
-  if (map.has(k - arr[i])) {
-    console.log(arr[i], k - arr[i]);
+  for (let j = i + 1; j < arr.length; j++) {
+    if (arr[i] > arr[j]) {
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
   }
-  map.set(arr[i], i);
 }
+console.log(arr);
