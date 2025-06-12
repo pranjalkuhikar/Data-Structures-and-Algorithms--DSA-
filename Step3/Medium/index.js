@@ -74,11 +74,11 @@
 // Question 4: Maximum Subarray Sum (Kadane's Algorithm)
 // Time Complexity: O(n) - single pass through array
 // Space Complexity: O(1) - constant space
-let arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
-let maxSoFar = arr[0];
-let currentMax = arr[0];
-for (let i = 1; i < arr.length; i++) {
-  currentMax = Math.max(arr[i], currentMax + arr[i]);
-  maxSoFar = Math.max(maxSoFar, currentMax);
-}
-console.log("Maximum Subarray Sum:", maxSoFar);
+// let arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
+// let maxSoFar = arr[0];
+// let currentMax = arr[0];
+// for (let i = 1; i < arr.length; i++) {
+//   currentMax = Math.max(arr[i], currentMax + arr[i]);
+//   maxSoFar = Math.max(maxSoFar, currentMax);
+// }
+// console.log("Maximum Subarray Sum:", maxSoFar);

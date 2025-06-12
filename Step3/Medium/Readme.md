@@ -6,6 +6,8 @@
 - [Problems & Solutions](#problems--solutions)
   - [1. Two Sum](#1-two-sum)
   - [2. Sort Array of 0s, 1s, and 2s](#2-sort-array-of-0s-1s-and-2s)
+  - [3. Majority Element](#3-majority-element)
+  - [4. Maximum Subarray Sum](#4-maximum-subarray-sum)
 - [Time & Space Complexity](#time--space-complexity)
 
 ## Overview
@@ -110,14 +112,80 @@ while (mid <= high) {
 - Solution 2: Uses three pointers to partition array
 - Both solutions sort array in-place
 
+### 3. Majority Element
+
+**Problem:** Find the element that appears more than n/2 times in an array.
+
+#### Solution: Boyer-Moore Voting Algorithm
+
+```javascript
+let arr = [2, 2, 1, 1, 1, 2, 2];
+let count = 0;
+let candidate = null;
+
+for (let num of arr) {
+  if (count === 0) {
+    candidate = num;
+  }
+  count += num === candidate ? 1 : -1;
+}
+```
+
+**Example:**
+
+```javascript
+Input: [2, 2, 1, 1, 1, 2, 2];
+Output: 2;
+```
+
+**Explanation:**
+
+- Uses Boyer-Moore Voting Algorithm
+- Maintains a count and candidate
+- If count becomes 0, updates candidate
+- Final candidate is the majority element
+
+### 4. Maximum Subarray Sum (Kadane's Algorithm)
+
+**Problem:** Find the contiguous subarray with the largest sum.
+
+#### Solution: Kadane's Algorithm
+
+```javascript
+let nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
+let maxSoFar = nums[0];
+let currentMax = nums[0];
+
+for (let i = 1; i < nums.length; i++) {
+  currentMax = Math.max(nums[i], currentMax + nums[i]);
+  maxSoFar = Math.max(maxSoFar, currentMax);
+}
+```
+
+**Example:**
+
+```javascript
+Input: [-2, 1, -3, 4, -1, 2, 1, -5, 4];
+Output: 6(subarray[(4, -1, 2, 1)]);
+```
+
+**Explanation:**
+
+- Uses Kadane's Algorithm
+- Maintains two variables: currentMax and maxSoFar
+- currentMax tracks maximum sum ending at current position
+- maxSoFar tracks overall maximum sum
+
 ## Time & Space Complexity
 
-| Problem         | Solution      | Time Complexity | Space Complexity | Notes                |
-| --------------- | ------------- | --------------- | ---------------- | -------------------- |
-| Two Sum         | Brute Force   | O(n²)           | O(1)             | Nested loops         |
-| Two Sum         | Hash Map      | O(n)            | O(n)             | Single pass with map |
-| Sort 0s, 1s, 2s | Brute Force   | O(n²)           | O(1)             | Bubble sort approach |
-| Sort 0s, 1s, 2s | Three Pointer | O(n)            | O(1)             | Dutch National Flag  |
+| Problem              | Solution           | Time Complexity | Space Complexity | Notes                 |
+| -------------------- | ------------------ | --------------- | ---------------- | --------------------- |
+| Two Sum              | Brute Force        | O(n²)           | O(1)             | Nested loops          |
+| Two Sum              | Hash Map           | O(n)            | O(n)             | Single pass with map  |
+| Sort 0s, 1s, 2s      | Brute Force        | O(n²)           | O(1)             | Bubble sort approach  |
+| Sort 0s, 1s, 2s      | Three Pointer      | O(n)            | O(1)             | Dutch National Flag   |
+| Majority Element     | Boyer-Moore Voting | O(n)            | O(1)             | Single pass algorithm |
+| Maximum Subarray Sum | Kadane's Algorithm | O(n)            | O(1)             | Dynamic programming   |
 
 ## Usage
 
