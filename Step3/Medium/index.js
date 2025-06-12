@@ -55,3 +55,22 @@
 //   }
 // }
 // console.log(arr);
+
+// Question 3: Majority Element (>n/2 times)
+// Time Complexity: O(n) - single pass through array
+// Space Complexity: O(1) - constant space
+// Boyer-Moore Voting Algorithm
+// let arr = [2, 2, 1, 1, 1, 2, 2];
+// let count = 0;
+// let candidate = null;
+
+// for (let num of arr) {
+//   if (count === 0) {
+//     candidate = num;
+//   }
+//   count += num === candidate ? 1 : -1;
+// }
+
+// console.log("Majority Element:", candidate);
+
+
