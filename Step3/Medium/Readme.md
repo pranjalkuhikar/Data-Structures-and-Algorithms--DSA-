@@ -8,6 +8,8 @@
   - [2. Sort Array of 0s, 1s, and 2s](#2-sort-array-of-0s-1s-and-2s)
   - [3. Majority Element](#3-majority-element)
   - [4. Maximum Subarray Sum](#4-maximum-subarray-sum)
+  - [5. Maximum Subarray Sum with Subarray](#5-maximum-subarray-sum-with-subarray)
+  - [6. Stock Buy and Sell](#6-stock-buy-and-sell)
 - [Time & Space Complexity](#time--space-complexity)
 
 ## Overview
@@ -152,12 +154,12 @@ Output: 2;
 #### Solution: Kadane's Algorithm
 
 ```javascript
-let nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
-let maxSoFar = nums[0];
-let currentMax = nums[0];
+let arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
+let maxSoFar = arr[0];
+let currentMax = arr[0];
 
-for (let i = 1; i < nums.length; i++) {
-  currentMax = Math.max(nums[i], currentMax + nums[i]);
+for (let i = 1; i < arr.length; i++) {
+  currentMax = Math.max(arr[i], currentMax + arr[i]);
   maxSoFar = Math.max(maxSoFar, currentMax);
 }
 ```
@@ -176,16 +178,110 @@ Output: 6(subarray[(4, -1, 2, 1)]);
 - currentMax tracks maximum sum ending at current position
 - maxSoFar tracks overall maximum sum
 
+### 5. Maximum Subarray Sum with Subarray
+
+**Problem:** Given an integer array arr, find the contiguous subarray (containing at least one number) which has the largest sum and returns its sum and prints the subarray.
+
+#### Solution: Modified Kadane's Algorithm
+
+```javascript
+let arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
+let maxSoFar = arr[0];
+let currentMax = arr[0];
+let start = 0;
+let end = 0;
+let tempStart = 0;
+
+for (let i = 1; i < arr.length; i++) {
+  if (arr[i] > currentMax + arr[i]) {
+    currentMax = arr[i];
+    tempStart = i;
+  } else {
+    currentMax = currentMax + arr[i];
+  }
+
+  if (currentMax > maxSoFar) {
+    maxSoFar = currentMax;
+    start = tempStart;
+    end = i;
+  }
+}
+```
+
+**Example:**
+
+```javascript
+Input: [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+Output:
+Maximum Sum: 6
+Subarray: [4, -1, 2, 1]
+```
+
+**Explanation:**
+
+- Modified version of Kadane's Algorithm
+- Tracks start and end indices of maximum subarray
+- Updates indices when new maximum is found
+- Returns both sum and subarray
+
+### 6. Stock Buy and Sell
+
+**Problem:** Find the maximum profit that can be achieved by buying and selling stocks on different days.
+
+#### Solution: Single Pass Approach
+
+```javascript
+let prices = [7, 1, 5, 3, 6, 4];
+let minPrice = prices[0];
+let maxProfit = 0;
+let buyDay = 0;
+let sellDay = 0;
+let tempBuyDay = 0;
+
+for (let i = 1; i < prices.length; i++) {
+  if (prices[i] < minPrice) {
+    minPrice = prices[i];
+    tempBuyDay = i;
+  }
+
+  let currentProfit = prices[i] - minPrice;
+  if (currentProfit > maxProfit) {
+    maxProfit = currentProfit;
+    buyDay = tempBuyDay;
+    sellDay = i;
+  }
+}
+```
+
+**Example:**
+
+```javascript
+Input: [7, 1, 5, 3, 6, 4]
+Output:
+Maximum Profit: 5
+Buy on day 2 at price 1
+Sell on day 5 at price 6
+```
+
+**Explanation:**
+
+- Uses a single pass approach
+- Keeps track of minimum price and buy day
+- Calculates potential profit at each step
+- Updates maximum profit and sell day if current profit is higher
+
 ## Time & Space Complexity
 
-| Problem              | Solution           | Time Complexity | Space Complexity | Notes                 |
-| -------------------- | ------------------ | --------------- | ---------------- | --------------------- |
-| Two Sum              | Brute Force        | O(n²)           | O(1)             | Nested loops          |
-| Two Sum              | Hash Map           | O(n)            | O(n)             | Single pass with map  |
-| Sort 0s, 1s, 2s      | Brute Force        | O(n²)           | O(1)             | Bubble sort approach  |
-| Sort 0s, 1s, 2s      | Three Pointer      | O(n)            | O(1)             | Dutch National Flag   |
-| Majority Element     | Boyer-Moore Voting | O(n)            | O(1)             | Single pass algorithm |
-| Maximum Subarray Sum | Kadane's Algorithm | O(n)            | O(1)             | Dynamic programming   |
+| Problem                     | Solution           | Time Complexity | Space Complexity | Notes                   |
+| --------------------------- | ------------------ | --------------- | ---------------- | ----------------------- |
+| Two Sum                     | Brute Force        | O(n²)           | O(1)             | Nested loops            |
+| Two Sum                     | Hash Map           | O(n)            | O(n)             | Single pass with map    |
+| Sort 0s, 1s, 2s             | Brute Force        | O(n²)           | O(1)             | Bubble sort approach    |
+| Sort 0s, 1s, 2s             | Three Pointer      | O(n)            | O(1)             | Dutch National Flag     |
+| Majority Element            | Boyer-Moore Voting | O(n)            | O(1)             | Single pass algorithm   |
+| Maximum Subarray Sum        | Kadane's Algorithm | O(n)            | O(1)             | Dynamic programming     |
+| Maximum Subarray with Array | Modified Kadane's  | O(n)            | O(1)             | Tracks subarray indices |
+| Stock Buy and Sell          | Single Pass        | O(n)            | O(1)             | Greedy approach         |
 
 ## Usage
 

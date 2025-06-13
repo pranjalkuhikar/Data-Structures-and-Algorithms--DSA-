@@ -111,24 +111,24 @@
 // Question 6: Stock Buy and Sell
 // Time Complexity: O(n) - single pass through array
 // Space Complexity: O(1) - constant space
-let prices = [7, 1, 5, 3, 6, 4];
-let minPrice = prices[0];
-let maxProfit = 0;
-let buyDay = 0;
-let sellDay = 0;
-let tempBuyDay = 0;
-for (let i = 1; i < prices.length; i++) {
-  if (prices[i] < minPrice) {
-    minPrice = prices[i];
-    tempBuyDay = i;
-  }
-  let currentProfit = prices[i] - minPrice;
-  if (currentProfit > maxProfit) {
-    maxProfit = currentProfit;
-    buyDay = tempBuyDay;
-    sellDay = i;
-  }
-}
-console.log("Maximum Profit:", maxProfit);
-console.log("Buy on day:", buyDay + 1, "at price:", prices[buyDay]);
-console.log("Sell on day:", sellDay + 1, "at price:", prices[sellDay]);
+// let prices = [7, 1, 5, 3, 6, 4];
+// let minPrice = prices[0];
+// let maxProfit = 0;
+// let buyDay = 0;
+// let sellDay = 0;
+// let tempBuyDay = 0;
+// for (let i = 1; i < prices.length; i++) {
+//   if (prices[i] < minPrice) {
+//     minPrice = prices[i];
+//     tempBuyDay = i;
+//   }
+//   let currentProfit = prices[i] - minPrice;
+//   if (currentProfit > maxProfit) {
+//     maxProfit = currentProfit;
+//     buyDay = tempBuyDay;
+//     sellDay = i;
+//   }
+// }
+// console.log("Maximum Profit:", maxProfit);
+// console.log("Buy on day:", buyDay + 1, "at price:", prices[buyDay]);
+// console.log("Sell on day:", sellDay + 1, "at price:", prices[sellDay]);
