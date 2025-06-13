@@ -82,3 +82,31 @@
 //   maxSoFar = Math.max(maxSoFar, currentMax);
 // }
 // console.log("Maximum Subarray Sum:", maxSoFar);
+
+// Question 5: Maximum Subarray Sum with Subarray
+// Time Complexity: O(n) - single pass through array
+// Space Complexity: O(1) - constant space
+let arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
+let maxSoFar = arr[0];
+let currentMax = arr[0];
+let start = 0;
+let end = 0;
+let tempStart = 0;
+
+for (let i = 1; i < arr.length; i++) {
+  if (arr[i] > currentMax + arr[i]) {
+    currentMax = arr[i];
+    tempStart = i;
+  } else {
+    currentMax = currentMax + arr[i];
+  }
+
+  if (currentMax > maxSoFar) {
+    maxSoFar = currentMax;
+    start = tempStart;
+    end = i;
+  }
+}
+
+console.log("Maximum Subarray Sum:", maxSoFar);
+console.log("Subarray:", arr.slice(start, end + 1));
